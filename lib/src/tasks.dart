@@ -178,11 +178,11 @@ abstract class ZonedTask<T> extends _OwnsTaskState implements Cancelable {
   ZonedTask._(this._onCancelCallback);
 
   static ZonedTask<T> fromFuture<T>(Future<T> Function() task,
-          {OnCancelCallback? onCancel}) =>
+          {OnCancelCallback<T>? onCancel}) =>
       _FutureZonedTask<T>(task, onCancel: onCancel);
 
   static ZonedTask<T> fromStream<T>(Stream<T> Function() task,
-          {OnCancelCallback? onCancel}) =>
+          {OnCancelCallback<T>? onCancel}) =>
       _StreamZonedTask<T>(task, onCancel: onCancel);
 
   void _add(Cancelable c) {
